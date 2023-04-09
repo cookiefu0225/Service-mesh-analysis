@@ -1,0 +1,34 @@
+# apply & delete works for configuration file
+# kubectl apply/delete -f <file>
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  labels:
+    app: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  replicas: 2
+  strategy:
+    # RollingUpdate is default strategy
+    type: RollingUpdate
+  template:
+    # Pods information
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis-server
+        # if the image is neither in minikube docker registry nor in public docker registry
+        # 1. eval $(minikube -p minikube docker-env)       // connect to minikube registry
+        # 2. build image again
+        image: python-app
+        # set pull policy to never to tell kubectl to pull image only in docker registry
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8000
+            protocol: TCP
