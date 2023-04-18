@@ -17,6 +17,7 @@ spec:
     app: redis
   ports:
     - protocol: TCP
+      name: http
       # port is where the service sends requests
       port: 8000
       # targetPort is where the service is going to forward
