@@ -1,6 +1,7 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import RequestButton from './RequestButton.tsx';
+import RequestButton from './RequestButton';
 
 function App() {
   return (

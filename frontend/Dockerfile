@@ -29,4 +29,4 @@ CMD [ "npx", "serve", "build" ]
 
 # # Run the image in detached mode 
 # # and map port 3000 inside the container with 3000 on current host
-# docker run -p 3000:8000 -d react-frontend
+# docker run -p 3000:3000 -d --name frontend react-frontend
