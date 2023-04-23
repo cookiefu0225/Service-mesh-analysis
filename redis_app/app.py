@@ -6,7 +6,7 @@ from pathlib import Path
 app = Flask(__name__)
 r = redis.Redis(host='localhost', port=6379)
 
-r.set('entry', 'hello 538')
+r.set('entry', 'hello 538\n')
 
 file_path = Path.home() / 'file.bin' 
 with open(file_path, 'rb') as f:

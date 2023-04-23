@@ -21,7 +21,9 @@ RUN head -c 10M </dev/urandom > /root/file.bin
 # necessary, or the files will not be copied
 COPY . ./workspace
 
+EXPOSE 9000
+
 # --port to set customized port
-CMD redis-server --daemonize yes; python -m flask run --host=0.0.0.0 --port=8000
+CMD redis-server --daemonize yes; python -m flask run --host=0.0.0.0 --port=9000
 
 WORKDIR /workspace

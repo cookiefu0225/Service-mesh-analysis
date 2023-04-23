@@ -28,7 +28,7 @@ spec:
         # 2. build image again
         image: python-app
         # set pull policy to never to tell kubectl to pull image only in docker registry
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         ports:
-          - containerPort: 8000
+          - containerPort: 9000
             protocol: TCP

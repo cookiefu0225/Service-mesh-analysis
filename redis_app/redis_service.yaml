@@ -22,4 +22,4 @@ spec:
       port: 8000
       # targetPort is where the service is going to forward
       # the request, this targetPort should be listening
-      targetPort: 8000
+      targetPort: 9000
