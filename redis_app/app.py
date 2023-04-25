@@ -1,4 +1,4 @@
-from flask import Flask, send_file
+from flask import Flask, send_file, jsonify
 import redis
 import io
 from pathlib import Path
@@ -15,7 +15,9 @@ with open(file_path, 'rb') as f:
 
 @app.route("/")
 def hello_world():
-    return r.get('entry')
+    return jsonify(
+        message='hello CS538\n'
+    )
 
 @app.route("/download")
 def file_request():

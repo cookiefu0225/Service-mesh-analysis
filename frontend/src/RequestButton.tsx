@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const RequestButton: React.FC = () => {
 	const [size, setSize] = useState<SizeType>('large'); // default is 'middle'
-	const url = 'https://api.coingecko.com/api/v3/ping'; // destination of request
+	const url = 'http://10.104.142.12:8000'; // destination of request, testing destination: 'https://api.coingecko.com/api/v3/ping'
 
 	// send request when button is clicked
 	const send = () => {
@@ -15,13 +15,17 @@ const RequestButton: React.FC = () => {
 		// Test response
 		const requestFreq = 10;
 		for (let i = 0; i < requestFreq; i++) {
+			console.log("passed");
 			getRequest();
 		}
 	};
 
 	const getRequest = () => {
 		axios.get(url).then(response => {
-			console.log(response.data);
+			console.log(response);
+		}).catch(error => {
+			console.log(error);
+			
 		});
 	}
 
