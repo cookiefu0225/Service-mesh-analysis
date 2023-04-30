@@ -5,7 +5,8 @@ import axios from 'axios';
 
 const RequestButton: React.FC = () => {
 	const [size, setSize] = useState<SizeType>('large'); // default is 'middle'
-	const url = 'http://10.104.142.12:8000'; // destination of request, testing destination: 'https://api.coingecko.com/api/v3/ping'
+	const url = "http://redis-service.default.svc.cluster.local:8000"; // destination of request, testing destination: 'https://api.coingecko.com/api/v3/ping'
+	const [message, setMessage] = useState<String>('');
 
 	// send request when button is clicked
 	const send = () => {
@@ -15,7 +16,7 @@ const RequestButton: React.FC = () => {
 		// Test response
 		const requestFreq = 10;
 		for (let i = 0; i < requestFreq; i++) {
-			console.log("passed");
+			// console.log("passed");
 			getRequest();
 		}
 	};

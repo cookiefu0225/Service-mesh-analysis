@@ -5,6 +5,7 @@ metadata:
 spec:
   # clusterIP: 10.104.142.12
   clusterIP: 10.104.142.4
+  # type: NodePort
   selector:
     # Serve as a connection between deployment and pod
     # Equals to deployment & pod metadata label
@@ -18,3 +19,4 @@ spec:
       # targetPort is where the service is going to forward
       # the request, this targetPort should be listening
       targetPort: 3000
+      # nodePort: 31000
