@@ -1,28 +1,20 @@
-# Service depends on the pods, so pods/deployments should be launch first
-# apply & delete works for configuration file
-# kubectl apply/delete -f <file>
-
-# access app: https://minikube.sigs.k8s.io/docs/handbook/accessing/
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis-service
+  name: customer-service
   labels:
-    app: redis
+    org: sample
 spec:
-  clusterIP: 10.104.142.12
-  # endpoint: http://redis-service.default.svc.cluster.local:8000
   selector:
     # Serve as a connection between deployment and pod
     # Equals to deployment & pod metadata label
     # Identify which pods belong to this service
-    app: redis
+    org: sample
   ports:
     - protocol: TCP
       name: http
       # port is where the service sends requests
-      port: 8000
+      port: 5000
       # targetPort is where the service is going to forward
       # the request, this targetPort should be listening
-      targetPort: 9000
+      targetPort: 8080

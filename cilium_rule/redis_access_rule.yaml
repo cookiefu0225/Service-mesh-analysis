@@ -1,0 +1,18 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "redis-access"
+spec:
+  description: "L3-L4 policy on redis server"
+  endpointSelector:
+    matchLabels:
+      app: redis
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        org: sample
+    toPorts:
+    - ports:
+      - port: "8000"
+        protocol: TCP
+  

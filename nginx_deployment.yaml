@@ -2,17 +2,18 @@
 # kubectl apply/delete -f <file>
 # Get pod terminal
 # kubectl exec --stdin --tty <pod name> -- /bin/bash
+# kubectl exec <pod name> -- curl -d "message=hi" redis-service.default.svc.cluster.local:8000
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: customer-deployment
   labels:
-    app: sample
+    org: sample
 spec:
   selector:
     matchLabels:
-      app: sample
+      org: sample
   replicas: 1
   strategy:
     # RollingUpdate is default strategy
@@ -21,7 +22,7 @@ spec:
     # Pods information
     metadata:
       labels:
-        app: sample
+        org: sample
     spec:
       containers:
         - name: sample-runner
