@@ -10,9 +10,15 @@ spec:
   ingress:
   - fromEndpoints:
     - matchLabels:
-        org: sample
+        app: sample
     toPorts:
     - ports:
-      - port: "8000"
+      - port: "80"
         protocol: TCP
+      - port: "9000"
+        protocol: TCP
+      rules: 
+        http: 
+        - method: "POST"
+          path: "/"
   

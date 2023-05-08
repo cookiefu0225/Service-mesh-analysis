@@ -6,11 +6,12 @@ kind: Deployment
 metadata:
   name: redis-deployment
   labels:
-    app: redis
+    app.kubernetes.io/name: deathstar
 spec:
   selector:
     matchLabels:
-      app: redis
+      org: empire
+      class: deathstar
   replicas: 2
   strategy:
     # RollingUpdate is default strategy
@@ -19,16 +20,18 @@ spec:
     # Pods information
     metadata:
       labels:
-        app: redis
+        org: empire
+        class: deathstar
+        app.kubernetes.io/name: deathstar
     spec:
       containers:
-      - name: redis-server 
+      - name: deathstar
         # if the image is neither in minikube docker registry nor in public docker registry
         # 1. eval $(minikube -p minikube docker-env)       // connect to minikube registry
         # 2. build image again
         image: python-app
         # set pull policy to never to tell kubectl to pull image only in docker registry
         imagePullPolicy: IfNotPresent
-        ports:
-          - containerPort: 9000
-            protocol: TCP
+        # ports:
+        #   - containerPort: 9000
+        #     protocol: TCP

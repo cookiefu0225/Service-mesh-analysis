@@ -7,9 +7,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis-service 
+  name: deathstar
   labels:
-    app: redis
+    app.kubernetes.io/name: deathstar
 spec:
   type: ClusterIP
   # endpoint: http://redis-service.default.svc.cluster.local:8000
@@ -17,12 +17,15 @@ spec:
     # Serve as a connection between deployment and pod
     # Equals to deployment & pod metadata label
     # Identify which pods belong to this service
-    app: redis
+    org: empire
+    class: deathstar
   ports:
-    - protocol: TCP
-      name: http
-      # port is where the service sends requests
-      port: 80
-      # targetPort is where the service is going to forward
-      # the request, this targetPort should be listening
-      targetPort: 9000
+    # - protocol: TCP
+    #   name: http
+    #   # port is where the service sends requests
+    #   port: 80
+  #     # targetPort is where the service is going to forward
+  #     # the request, this targetPort should be listening
+  #     targetPort: 9000
+  - port: 80
+    targetPort: 9000

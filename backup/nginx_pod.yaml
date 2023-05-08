@@ -5,8 +5,10 @@ kind: Pod
 metadata:
   name: customer 
   labels:
-    app: sample
+    org: empire
+    class: tiefighter
+    app.kubernetes.io/name: tiefighter
 spec:
   containers:
-  - name: customer
+  - name: spaceship
     image: nginx
