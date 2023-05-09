@@ -11,7 +11,7 @@ spec:
   selector:
     matchLabels:
       app: redis
-  replicas: 2
+  replicas: 1
   strategy:
     # RollingUpdate is default strategy
     type: RollingUpdate

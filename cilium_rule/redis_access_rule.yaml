@@ -17,6 +17,7 @@ spec:
         protocol: TCP
       - port: "9000"
         protocol: TCP
+      - port: "5201"
       rules: 
         http: 
         - method: "POST"

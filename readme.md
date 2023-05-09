@@ -4,6 +4,67 @@
 
 [minikube quick start](https://minikube.sigs.k8s.io/docs/start/)  
 
+## Experiment Setting
+
+### Experiment
+
+**iperf3, ping, iperf3 while downloading, ping while downloading, downloading time** on  
+
+1. No extension
+2. Cilium
+3. Calico
+4. Flannel
+
+To collect:
+
+1. iperf3: Average bitrate (Gbits/sec)  
+2. ping: rtt information
+3. file transmission: time result
+
+### Set up Image and Run Pods  
+
+Note that command **eval $(minikube -p minikube docker-env)** only need to run once after minikube is set up.  
+
+    # root dir
+    cd redis_app
+    eval $(minikube -p minikube docker-env)
+    docker build -t python-app .
+    cd ..
+    kubectl apply -f kubernetes/
+
+### Enter the Containers (Pods)  
+
+Pod name and IP can be obtained with **kubectl get pod -o wide**
+
+    # root dir
+    kubectl exec --stdin --tty <pod name> -- /bin/bash
+    # bash
+
+    # iperf experiments
+    # Server command:
+    iperf3 -s
+    # Client command:
+    apt-get update
+    apt-get install iperf3
+    iperf3 -c <Server IP>
+
+    # ping experiments
+    # Client
+    apt-get update
+    apt-get install iputils-ping -y
+    ping <Server IP>
+
+    # download file
+    # Client
+    curl redis-service.default.svc.cluster.local/download
+
+Additional commands in client:
+
+    # GET request
+    curl redis-service.default.svc.cluster.local
+    # POST request
+    curl -d "message=<any message you want>" redis-service.default.svc.cluster.local
+
 ## Istio
 
 Download Istio
@@ -25,7 +86,7 @@ For detail usage, see [Istio setup video reference](https://www.youtube.com/watc
 
 ## Common Used Command  
 
-Start minikube  
+Start minikube, this should be adjusted with the testing tool you use (cilium, calico, flannel...)  
 
     minikube start
 

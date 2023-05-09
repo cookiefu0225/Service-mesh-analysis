@@ -8,7 +8,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     vim \
     wget \
     iputils-ping \
-    lsb-release
+    lsb-release \
+    iperf3
 
 RUN apt install -y redis-server
 
@@ -16,7 +17,7 @@ RUN pip install \
     flask \
     redis
 
-RUN head -c 10M </dev/urandom > /root/file.bin
+RUN head -c 500M </dev/urandom > /root/file.bin
 
 # necessary, or the files will not be copied
 COPY . ./workspace
