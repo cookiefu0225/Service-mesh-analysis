@@ -56,7 +56,7 @@ Pod name and IP can be obtained with **kubectl get pod -o wide**
 
     # download file
     # Client
-    curl redis-service.default.svc.cluster.local/download
+    time curl redis-service.default.svc.cluster.local/download
 
 Additional commands in client:
 
@@ -64,6 +64,8 @@ Additional commands in client:
     curl redis-service.default.svc.cluster.local
     # POST request
     curl -d "message=<any message you want>" redis-service.default.svc.cluster.local
+    # curl many times
+    for i in `seq 1 30`; do curl redis-service.default.svc.cluster.local/download; done
 
 ## Istio
 
